@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- From www.mybatis.org -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- Overall settings -->
+	<settings>
+		<!-- Use jdbc's getGeneratedKeys to get DB autoIncrement key -->
+		<setting name="useGeneratedKeys" value="true" />
+
+		<!-- Use alias to replace column names -->
+		<setting name="useColumnLabel" value="true" />
+
+		<!-- Use Camel style -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+
+
+<!-- 
+	<mappers>
+		<mapper resource="org/seckill/dao/*.xml" />
+	</mappers>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	
+	 -->
+</configuration>
