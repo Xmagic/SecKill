@@ -3,6 +3,7 @@ package org.seckill.dao;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.seckill.entity.SecKill;
 
 public interface SeckillDao {
@@ -13,7 +14,7 @@ public interface SeckillDao {
 	 * @param killTime
 	 * @return If the affected row >1, its the updated row number.
 	 */
-	int reduceNumber(long seckillId,Date killTime);
+	int reduceNumber(@Param(value="seckillId") long seckillId,@Param(value="killTime") Date killTime);
 	
 	/**
 	 * Query item by id
@@ -28,6 +29,6 @@ public interface SeckillDao {
 	 * @param limit
 	 * @return
 	 */
-	List<SecKill> queryAll(int offset, int limit);
+	List<SecKill> queryAll(@Param(value="offset")int offset, @Param(value="limit")int limit);
 	
 }

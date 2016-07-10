@@ -2,6 +2,10 @@ package org.seckill.dao;
 
 import static org.junit.Assert.*;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -27,7 +31,13 @@ public class SeckillDaoTest {
 	
 	@Test
 	public void testReduceNumber() throws Exception {
-		
+		try {
+			Date killtime = DateFormat.getDateInstance().parse("2016-11-01 00:01:00");
+			int result = seckillDao.reduceNumber(1002L, killtime);
+			System.out.println(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
@@ -44,7 +54,14 @@ public class SeckillDaoTest {
 	
 	@Test
 	public void testQueryAll() throws Exception {
-		
+		try {
+			List<SecKill> secKillList = seckillDao.queryAll(0, 6);
+			for (int i = 0; i < secKillList.size(); i++) {
+				System.out.println(secKillList.get(i));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

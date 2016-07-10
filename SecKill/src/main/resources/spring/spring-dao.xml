@@ -7,15 +7,14 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-
 	<!-- setup mybatis and spring -->
 	<!-- 1: setup DB related settings -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="${jdbc.driver}"></property>
-		<property name="jdbcUrl" value="${jdbc.url}"></property>
-		<property name="user" value="${jdbc.username}"></property>
-		<property name="password" value="${jdbc.password}"></property>
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${fuck.driver}"/>
+		<property name="jdbcUrl" value="${fuck.url}"/>
+		<property name="user" value="${fuck.username}"/>
+		<property name="password" value="${fuck.password}"/>
 
 	<!-- c3p0 connection pool private settings -->
 		<property name="maxPoolSize" value="30" />

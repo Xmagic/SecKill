@@ -6,9 +6,9 @@
 <mapper namespace="org.seckill.dao.SuccessKilledDao">
 	<insert id="insertSuccessKilled">
 		<!-- If insert existing item just ignore and return 0 -->
-		insert ignore into sucess_killed(seckill_id, user_phone)
+		insert ignore into success_killed(seckill_id, user_phone, state)
 		values
-		(#{seckillId}, #{userPhone});
+		(#{seckillId}, #{userPhone}, 0);
 	</insert>
 
 	<select id="queryByIdWithSeckill" resultType="SuccessKilled">
@@ -18,6 +18,7 @@
 			sk.create_time,
 			sk.state,
 			s.seckill_id "seckill.seckill_id",
+			s.number "seckill.number",
 			s.name "seckill.name",
 			s.start_time "seckill.start_time",
 			s.end_time "seckill.end_time",
@@ -25,6 +26,23 @@
 		from success_killed sk
 		inner join seckill s on sk.seckill_id = s.seckill_id
 		where sk.seckill_id=#{seckillId}
+	</select>
+	
+	<select id="queryAll" resultType="SuccessKilled">
+		select
+			sk.seckill_id,
+			sk.user_phone,
+			sk.create_time,
+			sk.state,
+			s.seckill_id "seckill.seckill_id",
+			s.number "seckill.number",
+			s.name "seckill.name",
+			s.start_time "seckill.start_time",
+			s.end_time "seckill.end_time",
+			s.create_time "seckill.create_time"
+		from success_killed sk
+		inner join seckill s on sk.seckill_id = s.seckill_id
+		limit #{offset}, #{limit};
 	</select>
 
 
